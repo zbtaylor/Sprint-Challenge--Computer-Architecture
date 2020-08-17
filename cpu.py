@@ -93,10 +93,10 @@ class CPU:
 
         while running:
             IR = self.ram[self.pc]
-            try:
-                self.trace()
-            except:
-                print('Trace failed.')
+            # try:
+            #     self.trace()
+            # except:
+            #     print('Trace failed.')
 
             # HLT
             if IR == int('00000001', 2):
@@ -179,14 +179,13 @@ class CPU:
                     self.pc += 2
 
             # JNE
-            elif IR == int('01010101', 2):
+            elif IR == int('01010110', 2):
                 if self.fl & 0b00000001 == False:
-                    print('not equal')
                     reg = self.ram[self.pc + 1]
                     self.pc = self.reg[reg]
                 else:
                     self.pc += 2
 
             else:
-                print('Woah now.')
+                print(f'Instruction missing: {bin(IR)}')
                 self.pc += 1
