@@ -188,4 +188,5 @@ class CPU:
                     self.pc += 2
 
             else:
+                print('Woah now.')
                 self.pc += 1
